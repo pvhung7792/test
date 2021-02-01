@@ -79,6 +79,20 @@
 		background-color: blue;
 		position: absolute;
 	}
+	#jupiter{
+		width: 30px;
+		height: 30px;
+		background-color: brown;
+		position: absolute;
+		z-index: 11;
+	}
+	#venus{
+		width: 30px;
+		height: 30px;
+		background-color: violet;
+		position: absolute;
+		z-index: 11;
+	}
 	.ring2{
 		height: 120px;
 		width: 600px;
@@ -101,6 +115,31 @@
 		z-index: 10;
 		box-sizing: border-box;
 	}
+	.ring4{
+		height: 180px;
+		width: 900px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 160px;
+		left: 50px;
+		z-index: 10;
+		box-sizing: border-box;
+		transform: rotate(20deg);
+	}
+
+	.ring5{
+		height: 180px;
+		width: 900px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 160px;
+		left: 50px;
+		z-index: 10;
+		box-sizing: border-box;
+		transform: rotate(-20deg);
+	}
 	
 </style>
 <body>
@@ -110,15 +149,20 @@
 		<div class="down-ring"></div>
 		<div class="ring2"></div>
 		<div class="ring3"></div>
+		<div class="ring4"></div>
+		<div class="ring5"></div>
 		<div class="planet" id="earth"></div>
 		<div class="planet" id="mar"></div>
 		<div class="planet" id="mercury"></div>
+		<div class="planet" id="jupiter"></div>
+		<div class="planet" id="venus"></div>
 	</div>
 </body>
 <script>
 	var earth = document.getElementById('earth')
 	var mar = document.getElementById('mar')
 	var mercury = document.getElementById('mercury')
+	var venus = document.getElementById('venus')
 
 	var radiantEarth = 0;
 	var countEarth = 0;
@@ -133,6 +177,36 @@
 		let top = 90*(1+Math.sin(radiantEarth))+145
 		earth.style.left = left+"px";
 		earth.style.top = top+"px";
+	}
+
+	var radiantJupiter = 0;
+	var countJupiter = 0;
+	function runJupiter(){
+		radiantJupiter += Math.PI/180/2
+		countJupiter ++ 
+		if (countJupiter == 360*2) { 
+			radiantJupiter = 0
+			countJupiter = 0
+		}
+		let left = 450*(1+Math.cos(radiantJupiter))+35-(450-450*Math.cos(Math.PI/9))*Math.cos(radiantJupiter)
+		let top = 90*(1+Math.sin(radiantJupiter))+145+(450*Math.sin(Math.PI/9))*Math.cos(radiantJupiter)
+		jupiter.style.left = left+"px";
+		jupiter.style.top = top+"px";
+	}
+
+	var radiantVenus = 0;
+	var countVenus = 0;
+	function runVenus(){
+		radiantVenus += Math.PI/180/2
+		countVenus ++ 
+		if (countVenus == 360*2) { 
+			radiantVenus = 0
+			countVenus = 0
+		}
+		let left = 450*(1+Math.cos(radiantVenus))+35-(450-450*Math.cos(-Math.PI/9))*Math.cos(radiantVenus)
+		let top = 90*(1+Math.sin(radiantVenus))+145+(450*Math.sin(-Math.PI/9))*Math.cos(radiantVenus)
+		venus.style.left = left+"px";
+		venus.style.top = top+"px";
 	}
 
 	var radiantMar = Math.PI*2;
@@ -176,7 +250,9 @@
 	}
 	//Tốc độ = 1000/720 x (thời gian trên 1 vòng (giây))  ádasdasd
 	setInterval(runEarth, 10);
+	setInterval(runJupiter, 20);
 	setInterval(runMar, 15);
 	setInterval(runMercury, 15);
+	setInterval(runVenus, 15);
 </script>
 </html>
