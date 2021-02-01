@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	body{
+		display: flex;
+		justify-content: center;
+	}
+	#space{
+		width: 1000px;
+		height: 500px;
+		background-color: black;
+		display: flex;
+		position: relative;
+	}
+	.planet{
+		border-radius: 50%;
+	}
+	.up-ring{
+		height: 60px;
+		width: 300px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 220px;
+		left: 350px;
+		z-index: 1;
+		border-bottom: none;
+		box-sizing: border-box;
+	}
+	.down-ring{
+		height: 60px;
+		width: 300px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 220px;
+		left: 350px;
+		z-index: 6;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		box-sizing: border-box;
+	}
+	#sun{
+		height: 100px;
+		width: 100px;
+		background-color: yellow;
+		/* background-image: url('image/sun.png'); */
+		background-size: 100% ;
+		position: absolute;
+		top: 200px;
+		left: 450px;
+		z-index: 5;
+	}
+	#earth{
+		width: 30px;
+		height: 30px;
+		background-color: green;
+		/* background-image: url('image/earth.png'); */
+		background-size: 100% ;
+		position: absolute;
+		z-index: 11;
+	}
+	#mar{
+		width: 30px;
+		height: 30px;
+		background-color: red;
+		position: absolute;
+		z-index: 11;
+	}
+	#mercury{
+		width: 30px;
+		height: 30px;
+		background-color: blue;
+		position: absolute;
+	}
+	.ring2{
+		height: 120px;
+		width: 600px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 190px;
+		left: 200px;
+		z-index: 3;
+		box-sizing: border-box;
+	}
+	.ring3{
+		height: 180px;
+		width: 900px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 160px;
+		left: 50px;
+		z-index: 10;
+		box-sizing: border-box;
+	}
+	
+</style>
+<body>
+	<div id="space">
+		<div class="up-ring"></div>
+		<div class="planet" id="sun"></div>
+		<div class="down-ring"></div>
+		<div class="ring2"></div>
+		<div class="ring3"></div>
+		<div class="planet" id="earth"></div>
+		<div class="planet" id="mar"></div>
+		<div class="planet" id="mercury"></div>
+	</div>
+</body>
+<script>
+	var earth = document.getElementById('earth')
+	var mar = document.getElementById('mar')
+	var mercury = document.getElementById('mercury')
+
+	var radiantEarth = 0;
+	var countEarth = 0;
+	function runEarth(){
+		radiantEarth += Math.PI/180/2
+		countEarth ++ 
+		if (countEarth == 360*2) { 
+			radiantEarth = 0
+			countEarth = 0
+		}
+		let left = 450*(1+Math.cos(radiantEarth))+35
+		let top = 90*(1+Math.sin(radiantEarth))+145
+		earth.style.left = left+"px";
+		earth.style.top = top+"px";
+	}
+
+	var radiantMar = Math.PI*2;
+	var countMar = 0;
+	function runMar(){
+		radiantMar -= Math.PI/180/2
+		countMar ++ 
+		if (countMar == 360*2) { 
+			radiantMar = Math.PI*2
+			countMar = 0
+		}
+		let left = 300*(1-Math.cos(radiantMar))+185
+		let top = 60*(1-Math.sin(radiantMar))+175
+		if (top<=220) {
+			mar.style.zIndex = 4;
+		}else {
+			mar.style.zIndex = 8;
+		}		
+		mar.style.left = left+"px";
+		mar.style.top = top+"px";
+	}
+
+	var radiantMercury = 0;
+	var countMercury = 0;
+	function runMercury(){
+		radiantMercury += Math.PI/180/2
+		countMercury ++ 
+		if (countMercury == 360*2) { 
+			radiantMercury = 0
+			countMercury = 0
+		}
+		let left = 150*(1-Math.cos(radiantMercury))+335
+		let top = 30*(1-Math.sin(radiantMercury))+205
+		if (top<=220) {
+			mercury.style.zIndex = 4;
+		}else {
+			mercury.style.zIndex = 7;
+		}
+		mercury.style.left = left+"px";
+		mercury.style.top = top+"px";
+	}
+
+	setInterval(runEarth, 10);
+	setInterval(runMar, 15);
+	setInterval(runMercury, 15);
+</script>
+</html>
