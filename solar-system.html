@@ -93,6 +93,13 @@
 		position: absolute;
 		z-index: 11;
 	}
+	#pluto{
+		width: 30px;
+		height: 30px;
+		background-color: purple;
+		position: absolute;
+		z-index: 11;
+	}
 	.ring2{
 		height: 120px;
 		width: 600px;
@@ -140,6 +147,19 @@
 		box-sizing: border-box;
 		transform: rotate(-20deg);
 	}
+
+	.ring6{
+		height: 165px;
+		width: 900px;
+		border: 2px white solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 167.5px;
+		left: 50px;
+		z-index: 10;
+		box-sizing: border-box;
+		transform: rotate(-30deg);
+	}
 	
 </style>
 <body>
@@ -151,11 +171,13 @@
 		<div class="ring3"></div>
 		<div class="ring4"></div>
 		<div class="ring5"></div>
+		<div class="ring6"></div>
 		<div class="planet" id="earth"></div>
 		<div class="planet" id="mar"></div>
 		<div class="planet" id="mercury"></div>
 		<div class="planet" id="jupiter"></div>
 		<div class="planet" id="venus"></div>
+		<div class="planet" id="pluto"></div>
 	</div>
 </body>
 <script>
@@ -163,6 +185,7 @@
 	var mar = document.getElementById('mar')
 	var mercury = document.getElementById('mercury')
 	var venus = document.getElementById('venus')
+	var pluto = document.getElementById('pluto')
 
 	var radiantEarth = 0;
 	var countEarth = 0;
@@ -207,6 +230,21 @@
 		let top = 90*(1+Math.sin(radiantVenus))+145+(450*Math.sin(-Math.PI/9))*Math.cos(radiantVenus)
 		venus.style.left = left+"px";
 		venus.style.top = top+"px";
+	}
+
+	var radiantPluto = 0;
+	var countPluto = 0;
+	function runPluto(){
+		radiantPluto -= Math.PI/180/2
+		countPluto ++ 
+		if (countPluto == 360*2) { 
+			radiantPluto = 0
+			countPluto = 0
+		}
+		let left = 450*(1+Math.cos(radiantPluto))+35-(450-450*Math.cos(-Math.PI*1.5/9))*Math.cos(radiantPluto)
+		let top = 90*(1+Math.sin(radiantPluto))+145+(450*Math.sin(-Math.PI*1.5/9))*Math.cos(radiantPluto)
+		pluto.style.left = left+"px";
+		pluto.style.top = top+"px";
 	}
 
 	var radiantMar = Math.PI*2;
@@ -254,5 +292,6 @@
 	setInterval(runMar, 15);
 	setInterval(runMercury, 15);
 	setInterval(runVenus, 15);
+	setInterval(runPluto, 15);
 </script>
 </html>
