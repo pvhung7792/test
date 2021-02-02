@@ -11,115 +11,109 @@
 		justify-content: center;
 	}
 	#space{
+		overflow: hidden;
 		width: 1000px;
 		height: 500px;
 		background-color: black;
 		display: flex;
 		position: relative;
 	}
-	.planet{
+	.ring{
+		border: 2px white solid;
 		border-radius: 50%;
+		position: absolute;
+		box-sizing: border-box;
+		z-index: 10;
+	}
+	.planet{
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		position: absolute;
+		z-index: 11;
 	}
 	.up-ring{
 		height: 60px;
 		width: 300px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
 		top: 220px;
 		left: 350px;
 		z-index: 1;
 		border-bottom: none;
-		box-sizing: border-box;
 	}
 	#mid-ring{
 		height: 60px;
 		width: 300px;
 		border: 2px;
-		border-radius: 50%;
-		position: absolute;
 		top: 220px;
 		left: 350px;
 		z-index: 6;
 		border-top: none;
 		border-left: none;
 		border-right: none;
-		box-sizing: border-box;
 	}
 	.down-ring{
 		height: 60px;
 		width: 300px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
 		top: 220px;
 		left: 350px;
 		z-index: 6;
 		border-top: none;
 		border-left: none;
 		border-right: none;
-		box-sizing: border-box;
 	}
 	#sun{
 		height: 100px;
 		width: 100px;
 		background-color: yellow;
 		/* background-image: url('image/sun.png'); */
-		background-size: 100% ;
-		position: absolute;
+		/* background-size: 100% ; */
 		top: 200px;
 		left: 450px;
 		z-index: 5;
 	}
 	#earth{
-		width: 30px;
-		height: 30px;
 		background-color: green;
 		/* background-image: url('image/earth.png'); */
-		background-size: 100% ;
-		position: absolute;
-		z-index: 11;
+		/* background-size: 100% ; */
 	}
-	#mar{
-		width: 30px;
+	/* #mar::after{
+		content: "";
 		height: 30px;
-		background-color: red;
+		width: 30px;
 		position: absolute;
-		z-index: 11;
+		background-color: red;
+		opacity: 0.5;
+		border-radius: 50%;
+		left: -5px;
+	}
+	#mar::before{
+		content: "";
+		height: 30px;
+		width: 30px;
+		position: absolute;
+		background-color: red;
+		opacity: 0.5;
+		border-radius: 50%;
+		right: -5px;
+	} */
+	#mar{
+		background-color: red;
 	}
 	#mercury{
-		width: 30px;
-		height: 30px;
 		background-color: blue;
-		position: absolute;
 	}
 	#jupiter{
-		width: 30px;
-		height: 30px;
 		background-color: brown;
-		position: absolute;
-		z-index: 11;
 	}
 	#venus{
-		width: 30px;
-		height: 30px;
 		background-color: violet;
-		position: absolute;
-		z-index: 11;
 	}
 	#pluto{
-		width: 30px;
-		height: 30px;
 		background-color: purple;
-		position: absolute;
-		z-index: 11;
 	}
 	.ring2{
 		height: 120px;
 		width: 600px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
 		top: 190px;
 		left: 200px;
 		z-index: 3;
@@ -128,151 +122,168 @@
 	.ring3{
 		height: 180px;
 		width: 900px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
 		top: 160px;
 		left: 50px;
-		z-index: 10;
 		box-sizing: border-box;
 	}
 	.ring4{
 		height: 180px;
 		width: 900px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
 		top: 160px;
 		left: 50px;
-		z-index: 10;
-		box-sizing: border-box;
 		transform: rotate(20deg);
 	}
 
 	.ring5{
 		height: 180px;
 		width: 900px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
 		top: 160px;
 		left: 50px;
-		z-index: 10;
-		box-sizing: border-box;
 		transform: rotate(-20deg);
 	}
 
 	.ring6{
-		height: 165px;
+		height: 180px;
 		width: 900px;
-		border: 2px white solid;
-		border-radius: 50%;
-		position: absolute;
-		top: 167.5px;
+		top: 160px;
 		left: 50px;
-		z-index: 10;
-		box-sizing: border-box;
 		transform: rotate(-30deg);
 	}
 	
 </style>
 <body>
 	<div id="space">
-		<div class="up-ring">
+		<div class="ring up-ring">
 		</div>
 		<div class="planet" id="sun"></div>
-		<div id="mid-ring">
+		<div class="ring" id="mid-ring">
 			<div class="planet" id="mercury"></div>
 		</div>
-		<div class="down-ring">
+		<div class="ring down-ring">
 		</div>
-		<div class="ring2" id="ring2">
+		<div class="ring ring2" id="ring2">
 			<div class="planet" id="mar"></div>
 		</div>
-		<div class="ring3">
+		<div class="ring ring3">
 			<div class="planet" id="earth"></div>
 		</div>
-		<div class="ring4">
+		<div class="ring ring4">
 			<div class="planet" id="jupiter"></div>
 		</div>
-		<div class="ring5">
+		<div class="ring ring5">
 			<div class="planet" id="venus"></div>
 		</div>
-		<div class="ring6"></div>
-		
-		
-		<div class="planet" id="pluto"></div>
+		<div class="ring ring6">
+			<div class="planet" id="pluto"></div>
+		</div>
 	</div>
 	
 </body>
 <script>
-	var earth = document.getElementById('earth')
+	// var earth = document.getElementById('earth')
 	var mar = document.getElementById('mar')
 	var mercury = document.getElementById('mercury')
-	var venus = document.getElementById('venus')
-	var pluto = document.getElementById('pluto')
+	// var venus = document.getElementById('venus')
+	// var pluto = document.getElementById('pluto')
 
-	var radiantEarth = 0;
-	var countEarth = 0;
-	function runEarth(){
-		radiantEarth += Math.PI/180/2
-		countEarth ++ 
-		if (countEarth == 360*2) { 
-			radiantEarth = 0
-			countEarth = 0
-		}
-		let left = 450*(1+Math.cos(radiantEarth))-15
-		let top = 90*(1+Math.sin(radiantEarth))-15
-		earth.style.left = left+"px";
-		earth.style.top = top+"px";
+
+	function planet(name, width, height, speed, start = 0, dir = 1){
+			this.name = name;
+			this.width = width;
+			this.height = height;
+			this.speed = speed;
+			this.num = 0;
+			this.rad = start;
+			this.dir = dir;
+			var selector = document.getElementById(name)
+
+			this.run = function(){
+				this.rad += this.dir*Math.PI/180/2
+				this.num ++ 
+				if (this.num == 360*2) { 
+					this.rad = start
+					this.num = 0
+				}
+				let left = this.width*0.5*(1+Math.cos(this.rad))-15
+				let top = this.height*0.5*(1+Math.sin(this.rad))-15
+				selector.style.left = left+"px";
+				selector.style.top = top+"px";
+			}
+
+			var me = this;
+			this.interval = setInterval(function () {
+				me.run();
+			}, this.speed);
 	}
 
-	var radiantJupiter = 0;
-	var countJupiter = 0;
-	function runJupiter(){
-		radiantJupiter += Math.PI/180/2
-		countJupiter ++ 
-		if (countJupiter == 360*2) { 
-			radiantJupiter = 0
-			countJupiter = 0
-		}
-		// let left = 450*(1+Math.cos(radiantJupiter))+35-(450-450*Math.cos(Math.PI/9))*Math.cos(radiantJupiter)
-		// let top = 90*(1+Math.sin(radiantJupiter))+145+(450*Math.sin(Math.PI/9))*Math.cos(radiantJupiter)
-		let left = 450*(1+Math.cos(radiantJupiter))-15
-		let top = 90*(1+Math.sin(radiantJupiter))-15
-		jupiter.style.left = left+"px";
-		jupiter.style.top = top+"px";
-	}
+	var planetEarth = new planet('earth', 900, 180, 15, Math.PI);
+	var planetJupiter = new planet('jupiter', 900, 180, 20);
+	var planetVenus = new planet('venus', 900, 180, 10);
+	var planetPluto = new planet('pluto', 900, 180, 25, 0, -1);
+	
+	
+	// var radiantEarth = 0;
+	// var countEarth = 0;
+	// function runEarth(){
+	// 	radiantEarth += Math.PI/180/2
+	// 	countEarth ++ 
+	// 	if (countEarth == 360*2) { 
+	// 		radiantEarth = 0
+	// 		countEarth = 0
+	// 	}
+	// 	let left = 450*(1+Math.cos(radiantEarth))-15
+	// 	let top = 90*(1+Math.sin(radiantEarth))-15
+	// 	earth.style.left = left+"px";
+	// 	earth.style.top = top+"px";
+	// }
 
-	var radiantVenus = 0;
-	var countVenus = 0;
-	function runVenus(){
-		radiantVenus += Math.PI/180/2
-		countVenus ++ 
-		if (countVenus == 360*2) { 
-			radiantVenus = 0
-			countVenus = 0
-		}
-		let left = 450*(1+Math.cos(radiantVenus))-15
-		let top = 90*(1+Math.sin(radiantVenus))-15
-		venus.style.left = left+"px";
-		venus.style.top = top+"px";
-	}
+	// var radiantJupiter = 0;
+	// var countJupiter = 0;
+	// function runJupiter(){
+	// 	radiantJupiter += Math.PI/180/2
+	// 	countJupiter ++ 
+	// 	if (countJupiter == 360*2) { 
+	// 		radiantJupiter = 0
+	// 		countJupiter = 0
+	// 	}
+	// 	let left = 450*(1+Math.cos(radiantJupiter))+35-(450-450*Math.cos(Math.PI/9))*Math.cos(radiantJupiter)
+	// 	let top = 90*(1+Math.sin(radiantJupiter))+145+(450*Math.sin(Math.PI/9))*Math.cos(radiantJupiter)
+	// 	let left = 450*(1+Math.cos(radiantJupiter))-15
+	// 	let top = 90*(1+Math.sin(radiantJupiter))-15
+	// 	jupiter.style.left = left+"px";
+	// 	jupiter.style.top = top+"px";
+	// }
 
-	var radiantPluto = 0;
-	var countPluto = 0;
-	function runPluto(){
-		radiantPluto -= Math.PI/180/2
-		countPluto ++ 
-		if (countPluto == 360*2) { 
-			radiantPluto = 0
-			countPluto = 0
-		}
-		let left = 450*(1+Math.cos(radiantPluto))+35-(450-450*Math.cos(-Math.PI*1.5/9))*Math.cos(radiantPluto)
-		let top = 90*(1+Math.sin(radiantPluto))+145+(450*Math.sin(-Math.PI*1.5/9))*Math.cos(radiantPluto)
-		pluto.style.left = left+"px";
-		pluto.style.top = top+"px";
-	}
+	// var radiantVenus = 0;
+	// var countVenus = 0;
+	// function runVenus(){
+	// 	radiantVenus += Math.PI/180/2
+	// 	countVenus ++ 
+	// 	if (countVenus == 360*2) { 
+	// 		radiantVenus = 0
+	// 		countVenus = 0
+	// 	}
+	// 	let left = 450*(1+Math.cos(radiantVenus))-15
+	// 	let top = 90*(1+Math.sin(radiantVenus))-15
+	// 	venus.style.left = left+"px";
+	// 	venus.style.top = top+"px";
+	// }
+
+	// var radiantPluto = 0;
+	// var countPluto = 0;
+	// function runPluto(){
+	// 	radiantPluto -= Math.PI/180/2
+	// 	countPluto ++ 
+	// 	if (countPluto == 360*2) { 
+	// 		radiantPluto = 0
+	// 		countPluto = 0
+	// 	}
+	// 	let left = 450*(1+Math.cos(radiantPluto))-15
+	// 	let top = 90*(1+Math.sin(radiantPluto))-15
+	// 	pluto.style.left = left+"px";
+	// 	pluto.style.top = top+"px";
+	// }
+
 	var ring2 = document.getElementById('ring2')
 	var radiantMar = Math.PI*2;
 	var countMar = 0;
@@ -293,6 +304,7 @@
 		mar.style.left = left+"px";
 		mar.style.top = top+"px";
 	}
+
 	var midRing = document.getElementById('mid-ring')
 	var radiantMercury = 0;
 	var countMercury = 0;
@@ -315,12 +327,12 @@
 		mercury.style.left = left+"px";
 		mercury.style.top = top+"px";
 	}
-	//Tốc độ = 1000/720 x (thời gian trên 1 vòng (giây))  ádasdasd
-	setInterval(runEarth, 10);
-	setInterval(runJupiter, 20);
+	//Tốc độ = 1000/720 x (thời gian trên 1 vòng (giây)) 
+	// setInterval(runEarth, 10);
+	// setInterval(runJupiter, 20);
 	setInterval(runMar, 15);
 	setInterval(runMercury, 15);
-	setInterval(runVenus, 15);
-	setInterval(runPluto, 15);
+	// setInterval(runVenus, 15);
+	// setInterval(runPluto, 15);
 </script>
 </html>
