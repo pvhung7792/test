@@ -32,6 +32,20 @@
 		border-bottom: none;
 		box-sizing: border-box;
 	}
+	#mid-ring{
+		height: 60px;
+		width: 300px;
+		border: 2px;
+		border-radius: 50%;
+		position: absolute;
+		top: 220px;
+		left: 350px;
+		z-index: 6;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		box-sizing: border-box;
+	}
 	.down-ring{
 		height: 60px;
 		width: 300px;
@@ -164,21 +178,32 @@
 </style>
 <body>
 	<div id="space">
-		<div class="up-ring"></div>
+		<div class="up-ring">
+		</div>
 		<div class="planet" id="sun"></div>
-		<div class="down-ring"></div>
-		<div class="ring2"></div>
-		<div class="ring3"></div>
-		<div class="ring4"></div>
-		<div class="ring5"></div>
+		<div id="mid-ring">
+			<div class="planet" id="mercury"></div>
+		</div>
+		<div class="down-ring">
+		</div>
+		<div class="ring2" id="ring2">
+			<div class="planet" id="mar"></div>
+		</div>
+		<div class="ring3">
+			<div class="planet" id="earth"></div>
+		</div>
+		<div class="ring4">
+			<div class="planet" id="jupiter"></div>
+		</div>
+		<div class="ring5">
+			<div class="planet" id="venus"></div>
+		</div>
 		<div class="ring6"></div>
-		<div class="planet" id="earth"></div>
-		<div class="planet" id="mar"></div>
-		<div class="planet" id="mercury"></div>
-		<div class="planet" id="jupiter"></div>
-		<div class="planet" id="venus"></div>
+		
+		
 		<div class="planet" id="pluto"></div>
 	</div>
+	
 </body>
 <script>
 	var earth = document.getElementById('earth')
@@ -196,8 +221,8 @@
 			radiantEarth = 0
 			countEarth = 0
 		}
-		let left = 450*(1+Math.cos(radiantEarth))+35
-		let top = 90*(1+Math.sin(radiantEarth))+145
+		let left = 450*(1+Math.cos(radiantEarth))-15
+		let top = 90*(1+Math.sin(radiantEarth))-15
 		earth.style.left = left+"px";
 		earth.style.top = top+"px";
 	}
@@ -211,8 +236,10 @@
 			radiantJupiter = 0
 			countJupiter = 0
 		}
-		let left = 450*(1+Math.cos(radiantJupiter))+35-(450-450*Math.cos(Math.PI/9))*Math.cos(radiantJupiter)
-		let top = 90*(1+Math.sin(radiantJupiter))+145+(450*Math.sin(Math.PI/9))*Math.cos(radiantJupiter)
+		// let left = 450*(1+Math.cos(radiantJupiter))+35-(450-450*Math.cos(Math.PI/9))*Math.cos(radiantJupiter)
+		// let top = 90*(1+Math.sin(radiantJupiter))+145+(450*Math.sin(Math.PI/9))*Math.cos(radiantJupiter)
+		let left = 450*(1+Math.cos(radiantJupiter))-15
+		let top = 90*(1+Math.sin(radiantJupiter))-15
 		jupiter.style.left = left+"px";
 		jupiter.style.top = top+"px";
 	}
@@ -226,8 +253,8 @@
 			radiantVenus = 0
 			countVenus = 0
 		}
-		let left = 450*(1+Math.cos(radiantVenus))+35-(450-450*Math.cos(-Math.PI/9))*Math.cos(radiantVenus)
-		let top = 90*(1+Math.sin(radiantVenus))+145+(450*Math.sin(-Math.PI/9))*Math.cos(radiantVenus)
+		let left = 450*(1+Math.cos(radiantVenus))-15
+		let top = 90*(1+Math.sin(radiantVenus))-15
 		venus.style.left = left+"px";
 		venus.style.top = top+"px";
 	}
@@ -246,7 +273,7 @@
 		pluto.style.left = left+"px";
 		pluto.style.top = top+"px";
 	}
-
+	var ring2 = document.getElementById('ring2')
 	var radiantMar = Math.PI*2;
 	var countMar = 0;
 	function runMar(){
@@ -256,17 +283,17 @@
 			radiantMar = Math.PI*2
 			countMar = 0
 		}
-		let left = 300*(1-Math.cos(radiantMar))+185
-		let top = 60*(1-Math.sin(radiantMar))+175
-		if (top<=220) {
-			mar.style.zIndex = 4;
+		let left = 300*(1-Math.cos(radiantMar))-15
+		let top = 60*(1-Math.sin(radiantMar))-15
+		if (top<=30) {
+			ring2.style.zIndex = 4;
 		}else {
-			mar.style.zIndex = 8;
+			ring2.style.zIndex = 8;
 		}		
 		mar.style.left = left+"px";
 		mar.style.top = top+"px";
 	}
-
+	var midRing = document.getElementById('mid-ring')
 	var radiantMercury = 0;
 	var countMercury = 0;
 	function runMercury(){
@@ -276,12 +303,14 @@
 			radiantMercury = 0
 			countMercury = 0
 		}
-		let left = 150*(1-Math.cos(radiantMercury))+335
-		let top = 30*(1-Math.sin(radiantMercury))+205
-		if (top<=220) {
-			mercury.style.zIndex = 4;
+		let left = 150*(1-Math.cos(radiantMercury))-15
+		let top = 30*(1-Math.sin(radiantMercury))-15
+		if (top<=-5) {
+			mercury.style.zIndex = 2;
+			midRing.style.zIndex = 2;
 		}else {
 			mercury.style.zIndex = 7;
+			midRing.style.zIndex = 7;
 		}
 		mercury.style.left = left+"px";
 		mercury.style.top = top+"px";
